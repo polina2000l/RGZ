@@ -23,7 +23,7 @@ class UserController extends Controller
      public function list()
      {
          $this->init();
-         //return $this->arr;
+         return $this->arr;
      }
 
      /**
