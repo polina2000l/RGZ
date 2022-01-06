@@ -31,11 +31,19 @@ class UserController extends Controller
      * @param $id
      * @return array
      */
-     public function info($id)
+
+    public function info($id)
      {
-         $this->init();
-         return  $this->arr[$id-1];
-     }
+        $this->arr = User::query()
+            ->where(['id' => $id])
+            ->first();
+
+        if ($arr === null) {
+            throw new NotFoundHttpException('Пользователь не найден');
+        }
+
+        return $arr;
+    }
 
      public function authorization(Request $request)
      {
